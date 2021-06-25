@@ -1,7 +1,7 @@
 # build
 FROM golang:alpine AS build-env
 RUN apk --no-cache add build-base git gcc
-RUN git clone https://github.com/coinbase/memcachedbetween.git
+COPY . memcachedbetween
 RUN cd memcachedbetween && go build -o memcachedbetween
 
 ## app
