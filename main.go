@@ -95,7 +95,7 @@ func createListeners(log *zap.Logger, sd *statsd.Client, cfg *config.Config, ups
 		var local string
 		if strings.Contains(cfg.Network, "unix") {
 			local = fmt.Sprintf("%s%d%s", cfg.LocalSocketPrefix, index, cfg.LocalSocketSuffix)
-			configs = append(configs, fmt.Sprintf("%s||", local))
+			configs = append(configs, fmt.Sprintf("%s|%s|", local, upstream))
 		} else {
 			port := cfg.LocalPortStart + index
 			local = fmt.Sprintf(":%d", port)
